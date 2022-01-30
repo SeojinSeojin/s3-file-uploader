@@ -10,7 +10,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/upload', upload.single('file'), (req, res, next) => {
-  console.log(req.file);
+  if (!req.file) return res.status(400).send('file이 있는지 확인해주세요 ㅅㄱ');
   return res.status(201).json({ file: req.file });
 });
 
